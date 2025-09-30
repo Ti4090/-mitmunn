@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#7A1F2B">
+    <title>UMITMUN'25 - Model United Nations Conference</title>
+    
+    <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- DNS prefetch for performance -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Mobile performance CSS - inline for immediate loading -->
+    <style>
+        /* Critical CSS for immediate rendering */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Mobile-first performance optimizations */
+        @media (max-width: 768px) {
+            .global-background-logos,
+            .background-bubbles {
+                display: none !important; /* Hide on mobile for better performance */
+            }
+            
+            body {
+                animation: none !important; /* Disable background animation on mobile */
+                background: linear-gradient(-45deg, #7A1F2B, #000000) !important;
+            }
+            
+            /* Disable expensive effects on mobile */
+            .nav-link::before,
+            .nav-link::after,
+            .time-unit::before,
+            .apply-btn::before,
+            .large-apply-btn::before {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Navigation Bar (EN ÜSTE ALINDI) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2></h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="committees">Committees</a>
+                <a href="#" class="nav-link" data-page="executive">Executive Team</a>
+                <a href="#" class="nav-link" data-page="applications">Applications</a>
+                <a href="#" class="nav-link" data-page="study-guides">Study Guides</a>
+                <a href="#" class="nav-link" data-page="faq">FAQ</a>
+                <a href="#" class="nav-link" data-page="about">About Us</a>
+                <a href="#" class="nav-link" data-page="contact">Contact Us</a>
+                <a href="#" class="nav-link" data-page="venue">Venue</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Multi-Layer Background Logos (NAVBAR ALTINA ALINDI) -->
+    <div class="global-background-logos">
+        <!-- Background logo images - reduced to 5 for better performance -->
+        <div class="bg-logo bg-logo-1"><img src="test4090.png" alt="Logo" loading="lazy"></div>
+        <div class="bg-logo bg-logo-2"><img src="test4090.png" alt="Logo" loading="lazy"></div>
+        <div class="bg-logo bg-logo-3"><img src="test4090.png" alt="Logo" loading="lazy"></div>
+        <div class="bg-logo bg-logo-4"><img src="test4090.png" alt="Logo" loading="lazy"></div>
+        <div class="bg-logo bg-logo-5"><img src="test4090.png" alt="Logo" loading="lazy"></div>
+    </div>
+
+    <!-- Decorative Light Bubbles - Reduced for Performance (NAVBAR ALTINA ALINDI) -->
+    <div class="background-bubbles">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="scrolling-banner top-banner">
+                <div class="banner-content">
+                    <span>Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • </span>
+                </div>
+            </div>
+            
+            <div class="home-container">
+                <h1 class="main-title"></h1>
+                <div class="countdown-container">
+                    <div class="countdown" id="countdown">
+                        <div class="time-unit">
+                            <span class="time-number" id="days">000</span>
+                            <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-number" id="hours">00</span>
+                            <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-number" id="minutes">00</span>
+                            <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="time-number" id="seconds">00</span>
+                            <span class="time-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="apply-btn" id="main-apply-btn" onclick="showPage('applications')">Apply Now</button>
+            </div>
+            
+            <div class="scrolling-banner bottom-banner">
+                <div class="banner-content reverse">
+                    <span>Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • Save the Date 5-6-7 December • </span>
+                </div>
+            </div>
+        </section>
+
+     <!-- Committees Page -->
+        <section id="committees" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Committees</h1>
+                <div class="committees-grid">
+                    <div class="committee-card" data-committee="0">
+                        <img src="specpol.jpg" alt="Committee 1" loading="lazy" decoding="async">
+                        <h3>SPECPOL</h3>
+                    </div>
+                    <div class="committee-card" data-committee="1">
+                        <img src="disec.jpg" alt="Committee 2" loading="lazy" decoding="async">
+                        <h3>DISEC</h3>
+                    </div>
+                    <div class="committee-card" data-committee="2">
+                        <img src="undp.jpg" alt="Committee 3" loading="lazy" decoding="async">
+                        <h3>UNDP</h3>
+                    </div>
+                    <div class="committee-card" data-committee="3">
+                        <img src="cgf.png" alt="Committee 4" loading="lazy" decoding="async">
+                        <h3>CGF</h3>
+                    </div>
+                    <div class="committee-card" data-committee="4">
+                        <img src="nato.jpg" alt="Committee 5" loading="lazy" decoding="async">
+                        <h3>NATO</h3>
+                    </div>
+                    <div class="committee-card" data-committee="5">
+                        <img src="jcc.jpg" alt="Committee 6" loading="lazy" decoding="async">
+                        <h3>JCC</h3>
+                    </div>
+                    <div class="committee-card" data-committee="6">
+                        <img src="hccc.jpg" alt="Committee 7" loading="lazy" decoding="async">
+                        <h3>HCC</h3>
+                    </div>
+                    <div class="committee-card" data-committee="7">
+                        <img src="jcc-2.jpg" alt="Committee 8" loading="lazy" decoding="async">
+                        <h3>JCC-2</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Committee Detail Page -->
+        <section id="committee-detail" class="page">
+            <div class="page-container">
+                <button class="back-btn" id="back-to-committees">← Back to Committees</button>
+                <div class="committee-detail-content">
+                    <div class="committee-info">
+                        <div class="committee-header">
+                            <h1 id="committee-detail-title">Loading...</h1>
+                        </div>
+                        <div class="usg-section">
+                            <h2 class="usg-section-title">Committee Leadership</h2>
+                            <div class="usg-members-grid">
+                                <div class="usg-member">
+                                    <div class="usg-image-container">
+                                        <img src="test.png" alt="USG Photo" class="usg-photo" loading="lazy" decoding="async" id="usg-image">
+                                        <div class="usg-overlay">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                    </div>
+                                    <div class="usg-details">
+                                        <h3 id="usg-name">Loading...</h3>
+                                        <p class="usg-position">Under Secretary General</p>
+                                        <div class="usg-divider"></div>
+                                    </div>
+                                </div>
+                                <div class="usg-member" id="co-usg-member">
+                                    <div class="usg-image-container">
+                                        <img src="test.png" alt="Co-USG Photo" class="usg-photo" loading="lazy" decoding="async" id="co-usg-image">
+                                        <div class="usg-overlay">
+                                            <i class="fas fa-user-friends"></i>
+                                        </div>
+                                    </div>
+                                    <div class="usg-details">
+                                        <h3 id="co-usg-name">Loading...</h3>
+                                        <p class="usg-position">Co-Under Secretary General</p>
+                                        <div class="usg-divider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="committee-description">
+                            <h3><i class="fas fa-info-circle"></i> About the Committee</h3>
+                            <p id="committee-description-text">Loading committee information...</p>
+                        </div>
+                        <div class="committee-agenda">
+                            <h3><i class="fas fa-calendar-alt"></i> Committee Agenda</h3>
+                            <p id="committee-agenda-text">Loading committee agenda...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Team Page -->
+        <section id="executive" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Executive Team</h1>
+                <div class="executive-grid">
+                    <div class="executive-member director">
+                        <img src="gökçe.jpg" alt="Director General" loading="lazy" decoding="async">
+                        <h3>Director General</h3>
+                        <p>Gökçe Fatma Keçe</p>
+                    </div>
+                    <div class="executive-member secretary-general">
+                        <img src="ahmet.jpg" alt="Secretary General" loading="lazy" decoding="async">
+                        <h3>Secretary General</h3>
+                        <p>Ahmet Semih Poyraz</p>
+                    </div>
+                    <div class="executive-member deputy">
+                        <img src="seifeddin.jpg" alt="Deputy Director General" loading="lazy" decoding="async">
+                        <h3>Deputy Director General</h3>
+                        <p>Seifeldin Abbas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications Page -->
+        <section id="applications" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Applications</h1>
+                <div class="applications-content">
+                    <div class="application-options">
+                        <div class="application-card">
+                            <h3>Delegation</h3>
+                            <div class="price-options">
+                                <div class="price-item">
+                                    <span class="price">1000 TL</span>
+                                    <span class="description">Per Person</span>
+                                </div>
+                            </div>
+                            <button class="application-btn" onclick="window.open('https://delegation-link.com', '_blank')">Apply for Delegation</button>
+                        </div>
+                        
+                        <div class="application-card">
+                            <h3>Delegate</h3>
+                            <div class="price-options">
+                                <div class="price-item">
+                                    <span class="price">1000 TL</span>
+                                    <span class="description">Delegate Registration</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price">1500 TL</span>
+                                    <span class="description">Delegate with Accommodation</span>
+                                </div>
+                            </div>
+                            <button class="application-btn" onclick="window.open('https://delegate-link.com', '_blank')">Apply as Delegate</button>
+                        </div>
+                        
+                        <div class="application-card">
+                            <h3>Staff (Chairboard & Organization Team)</h3>
+                            <div class="price-options">
+                                <div class="price-item">
+                                    <span class="price">800 TL</span>
+                                    <span class="description">Staff Registration</span>
+                                </div>
+                            </div>
+                            <button class="application-btn" onclick="window.open('https://staff-link.com', '_blank')">Apply for Staff Position</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Guides Page -->
+        <section id="study-guides" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Study Guides</h1>
+                <div class="study-guides-grid">
+                    <div class="study-guide-item">
+                        <img src="specpol.jpg" alt="SPECPOL" class="committee-image">
+                        <h3>SPECPOL</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="disec.jpg" alt="Security Council" class="committee-image">
+                        <h3>DISEC</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="undp.jpg" alt="Economic and Social Council" class="committee-image">
+                        <h3>UNDP</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="cgf.png" alt="Human Rights Council" class="committee-image">
+                        <h3>CGF</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="nato.jpg" alt="International Court of Justice" class="committee-image">
+                        <h3>NATO</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="jcc.jpg" alt="World Health Organization" class="committee-image">
+                        <h3>JCC</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="hccc.jpg" alt="UNESCO" class="committee-image">
+                        <h3>HCC</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                    <div class="study-guide-item">
+                        <img src="jcc-2.jpg" alt="Crisis Committee" class="committee-image">
+                        <h3>JCC-2</h3>
+                        <button class="download-btn" onclick="downloadPDF('test.pdf')">Download Study Guide</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Page -->
+        <section id="faq" class="page">
+            <div class="page-container">
+                <h1 class="page-title">FAQ</h1>
+                <div class="faq-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Will be added here as soon as possible</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>More information will be available soon. Stay tuned for updates!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section id="about" class="page">
+            <div class="page-container">
+                <h1 class="page-title">About Us</h1>
+                <div class="about-content">
+                    <p>Information about UMITMUN'25 will be added here.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Page -->
+        <section id="contact" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Contact Us</h1>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>umitmun@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+90 555 555 55 55</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venue Page -->
+        <section id="venue" class="page">
+            <div class="page-container">
+                <h1 class="page-title">Venue</h1>
+                <div class="venue-content">
+                    <button class="venue-btn" onclick="window.open('https://www.google.com/maps/place/%C3%9CM%C4%B0TK%C3%96Y+ANADOLU+%C4%B0MAM+HAT%C4%B0P+L%C4%B0SES%C4%B0+ERKEK+B%C3%96L%C3%9CM%C3%9C,+Alacaatl%C4%B1,+3354%2F1.+Sk+No:6,+06810+%C3%87ankaya%2FAnkara/data=!4m2!3m1!1s0x14d33f2951981581:0x9c1eb18048fecb9?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI1LjM3LjAYACDXggMqmQEsOTQyNjc3MjcsOTQyODQ0NjMsOTQyMjMyOTksOTQyMTY0MTMsOTQyODA1NzYsOTQyMTI0OTYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTc1MjMsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksNDcwODQzOTMsOTQyMTMyMDAsOTQyNTgzMjVCAlRS&skid=a52e1616-ea57-47fe-a426-126f813cedf8', '_blank')">
+                        View on Google Maps
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/umitmun/?__pwa=1" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.google.com/maps/place/%C3%9CM%C4%B0TK%C3%96Y+ANADOLU+%C4%B0MAM+HAT%C4%B0P+L%C4%B0SES%C4%B0+ERKEK+B%C3%96L%C3%9CM%C3%9C,+Alacaatl%C4%B1,+3354%2F1.+Sk+No:6,+06810+%C3%87ankaya%2FAnkara/data=!4m2!3m1!1s0x14d33f2951981581:0x9c1eb18048fecb9?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI1LjM3LjAYACDXggMqmQEsOTQyNjc3MjcsOTQyODQ0NjMsOTQyMjMyOTksOTQyMTY0MTMsOTQyODA1NzYsOTQyMTI0OTYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTc1MjMsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksNDcwODQzOTMsOTQyMTMyMDAsOTQyNTgzMjVCAlRS&skid=a52e1616-ea57-47fe-a426-126f813cedf8" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
