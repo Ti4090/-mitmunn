@@ -56,32 +56,9 @@
     
     <!-- Mobile performance CSS - inline for immediate loading -->
     <style>
-        /* Critical CSS for immediate rendering */
         body {
             margin: 0;
             padding: 0;
-        }
-        
-        /* Mobile-first performance optimizations */
-        @media (max-width: 768px) {
-            .global-background-logos,
-            .background-bubbles {
-                display: none !important; /* Hide on mobile for better performance */
-            }
-            
-            body {
-                animation: none !important; /* Disable background animation on mobile */
-                background: linear-gradient(-45deg, #7A1F2B, #000000) !important;
-            }
-            
-            /* Disable expensive effects on mobile */
-            .nav-link::before,
-            .nav-link::after,
-            .time-unit::before,
-            .apply-btn::before,
-            .large-apply-btn::before {
-                display: none !important;
-            }
         }
     </style>
 </head>
