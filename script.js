@@ -261,7 +261,7 @@ function showCommitteeDetail(index) {
     // Handle USG
     if (usgImage) {
         usgImage.src = committee.usgImage;
-        usgImage.alt = `${committee.usg} Photo`;
+    usgImage.alt = `${committee.usg} Photo`;
     }
     if (usgName) usgName.textContent = committee.usg;
     
@@ -679,6 +679,10 @@ const setupMemoryManagement = () => {
 };
 
 // Simple mobile optimizations - Keep animations working
+if (isMobile || isLowEndDevice) {
+    // Only tweak transition speed, do not disable or override any animation
+    // document.documentElement.style.setProperty('--transition', 'all 0.3s ease');
+}
 
 // Loading screen management removed - no loading screen element exists
 
@@ -729,40 +733,13 @@ function optimizeCountdownForMobile() {
 
 // Network-aware optimizations
 function setupNetworkOptimizations() {
-    if ('connection' in navigator) {
-        const connection = navigator.connection;
-        
-        // If on slow connection, disable expensive features
-        if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
-            // Disable background animations
-            document.body.style.animation = 'none';
-            
-            // Remove all backdrop filters
-            const elements = document.querySelectorAll('[style*="backdrop-filter"], .navbar, .countdown-container, .committee-card');
-            elements.forEach(el => {
-                el.style.backdropFilter = 'none';
-                el.style.webkitBackdropFilter = 'none';
-            });
-        }
-    }
+    // Ağ yavaş olsa bile animasyonları devre dışı bırakma
+    // Sadece görsel optimizasyonlar uygula, animasyonları kapatma
 }
 
 // Reduce motion for users who prefer it or are on low-end devices
 function setupReducedMotion() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    if (prefersReducedMotion || isLowEndDevice) {
-        // Disable all animations
-        const style = document.createElement('style');
-        style.textContent = `
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
+    // Reduce motion ayarı açılsa bile animasyonları kapatma
 }
 
 // Memory management for better mobile performance

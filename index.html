@@ -50,15 +50,39 @@
     
     <!-- Resource hints for better performance -->
     <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     
     <!-- Mobile performance CSS - inline for immediate loading -->
     <style>
+        /* Critical CSS for immediate rendering */
         body {
             margin: 0;
             padding: 0;
+        }
+        
+        /* Mobile-first performance optimizations */
+        @media (max-width: 768px) {
+            .global-background-logos,
+            .background-bubbles {
+                display: none !important; /* Hide on mobile for better performance */
+            }
+            
+            body {
+                animation: none !important; /* Disable background animation on mobile */
+                background: linear-gradient(-45deg, #7A1F2B, #000000) !important;
+            }
+            
+            /* Disable expensive effects on mobile */
+            .nav-link::before,
+            .nav-link::after,
+            .time-unit::before,
+            .apply-btn::before,
+            .large-apply-btn::before {
+                display: none !important;
+            }
         }
     </style>
 </head>
