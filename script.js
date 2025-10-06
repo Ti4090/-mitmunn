@@ -679,10 +679,6 @@ const setupMemoryManagement = () => {
 };
 
 // Simple mobile optimizations - Keep animations working
-if (isMobile || isLowEndDevice) {
-    // Just ensure animations work smoothly
-    document.documentElement.style.setProperty('--transition', 'all 0.3s ease');
-}
 
 // Loading screen management removed - no loading screen element exists
 
