@@ -261,7 +261,7 @@ function showCommitteeDetail(index) {
     // Handle USG
     if (usgImage) {
         usgImage.src = committee.usgImage;
-    usgImage.alt = `${committee.usg} Photo`;
+        usgImage.alt = `${committee.usg} Photo`;
     }
     if (usgName) usgName.textContent = committee.usg;
     
@@ -292,38 +292,41 @@ if (backToCommittees) {
     });
 }
 
-// FAQ event delegation for dynamic items
-const faqContent = document.querySelector('.faq-content');
-if (faqContent) {
-    faqContent.addEventListener('click', function (e) {
-        const question = e.target.closest('.faq-question');
-        if (!question) return;
-        const item = question.closest('.faq-item');
-        if (!item) return;
-
-        const isActive = item.classList.contains('active');
-        // Close all FAQ items
-        faqContent.querySelectorAll('.faq-item').forEach(faqItem => {
-            if (faqItem !== item) {
-                faqItem.classList.remove('active');
-                const otherAnswer = faqItem.querySelector('.faq-answer');
-                if (otherAnswer) {
-                    otherAnswer.style.maxHeight = '0';
+// Optimized FAQ functionality
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (question) {
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all FAQ items
+            faqItems.forEach(faqItem => {
+                if (faqItem !== item) {
+                    faqItem.classList.remove('active');
+                    const otherAnswer = faqItem.querySelector('.faq-answer');
+                    if (otherAnswer) {
+                        otherAnswer.style.maxHeight = '0';
+                    }
+                }
+            });
+            
+            // Toggle clicked item
+            if (!isActive) {
+                item.classList.add('active');
+                const answer = item.querySelector('.faq-answer');
+                if (answer) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            } else {
+                item.classList.remove('active');
+                const answer = item.querySelector('.faq-answer');
+                if (answer) {
+                    answer.style.maxHeight = '0';
                 }
             }
         });
-
-        // Toggle clicked item
-        const answer = item.querySelector('.faq-answer');
-        if (!isActive) {
-            item.classList.add('active');
-            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
-        } else {
-            item.classList.remove('active');
-            if (answer) answer.style.maxHeight = '0';
-        }
-    });
-}
+    }
+});
 
 // Enhanced countdown functionality with 3D number changes
 function updateCountdown() {
