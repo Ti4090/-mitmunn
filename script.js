@@ -292,41 +292,38 @@ if (backToCommittees) {
     });
 }
 
-// Optimized FAQ functionality
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    if (question) {
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            
-            // Close all FAQ items
-            faqItems.forEach(faqItem => {
-                if (faqItem !== item) {
-                    faqItem.classList.remove('active');
-                    const otherAnswer = faqItem.querySelector('.faq-answer');
-                    if (otherAnswer) {
-                        otherAnswer.style.maxHeight = '0';
-                    }
-                }
-            });
-            
-            // Toggle clicked item
-            if (!isActive) {
-                item.classList.add('active');
-                const answer = item.querySelector('.faq-answer');
-                if (answer) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            } else {
-                item.classList.remove('active');
-                const answer = item.querySelector('.faq-answer');
-                if (answer) {
-                    answer.style.maxHeight = '0';
+// FAQ event delegation for dynamic items
+const faqContent = document.querySelector('.faq-content');
+if (faqContent) {
+    faqContent.addEventListener('click', function (e) {
+        const question = e.target.closest('.faq-question');
+        if (!question) return;
+        const item = question.closest('.faq-item');
+        if (!item) return;
+
+        const isActive = item.classList.contains('active');
+        // Close all FAQ items
+        faqContent.querySelectorAll('.faq-item').forEach(faqItem => {
+            if (faqItem !== item) {
+                faqItem.classList.remove('active');
+                const otherAnswer = faqItem.querySelector('.faq-answer');
+                if (otherAnswer) {
+                    otherAnswer.style.maxHeight = '0';
                 }
             }
         });
-    }
-});
+
+        // Toggle clicked item
+        const answer = item.querySelector('.faq-answer');
+        if (!isActive) {
+            item.classList.add('active');
+            if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+            item.classList.remove('active');
+            if (answer) answer.style.maxHeight = '0';
+        }
+    });
+}
 
 // Enhanced countdown functionality with 3D number changes
 function updateCountdown() {
@@ -680,8 +677,8 @@ const setupMemoryManagement = () => {
 
 // Simple mobile optimizations - Keep animations working
 if (isMobile || isLowEndDevice) {
-    // Only tweak transition speed, do not disable or override any animation
-    // document.documentElement.style.setProperty('--transition', 'all 0.3s ease');
+    // Just ensure animations work smoothly
+    document.documentElement.style.setProperty('--transition', 'all 0.3s ease');
 }
 
 // Loading screen management removed - no loading screen element exists
@@ -733,13 +730,40 @@ function optimizeCountdownForMobile() {
 
 // Network-aware optimizations
 function setupNetworkOptimizations() {
-    // Ağ yavaş olsa bile animasyonları devre dışı bırakma
-    // Sadece görsel optimizasyonlar uygula, animasyonları kapatma
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        
+        // If on slow connection, disable expensive features
+        if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
+            // Disable background animations
+            document.body.style.animation = 'none';
+            
+            // Remove all backdrop filters
+            const elements = document.querySelectorAll('[style*="backdrop-filter"], .navbar, .countdown-container, .committee-card');
+            elements.forEach(el => {
+                el.style.backdropFilter = 'none';
+                el.style.webkitBackdropFilter = 'none';
+            });
+        }
+    }
 }
 
 // Reduce motion for users who prefer it or are on low-end devices
 function setupReducedMotion() {
-    // Reduce motion ayarı açılsa bile animasyonları kapatma
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion || isLowEndDevice) {
+        // Disable all animations
+        const style = document.createElement('style');
+        style.textContent = `
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // Memory management for better mobile performance
